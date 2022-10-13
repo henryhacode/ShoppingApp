@@ -151,3 +151,73 @@ Grading:
 2:implement valid scenario (login→order->payment->transaction->shipping)
 2: implement service discovery , config based payment routing and secret management
 2: JWT for client facing , and service keys for inner service communication
+
+
+========
+Account Services
+Api:
+
+
+Sample output:
+{
+    "firstName": "phuc",
+    "lastName": "thai",
+    "email": "thai@miu.edu",
+    "shippingAddresses": [
+        {
+            "id": 1,
+            "street": "801 N 12th St",
+            "city": "Fairfield",
+            "state": "IA",
+            "zipCode": "52556"
+        },
+        {
+            "id": 2,
+            "street": "1000 N 4th St",
+            "city": "Fairfield",
+            "state": "IA",
+            "zipCode": "52557"
+        }
+    ],
+    "preferredShipping": 1,
+    "paymentMethods": [
+        {
+            "id": 1,
+            "type": "CreditCard",
+            "attributes": [
+                {
+                    "id": 2,
+                    "name": "expiredDate",
+                    "value": "09/2028"
+                },
+                {
+                    "id": 3,
+                    "name": "number",
+                    "value": "123456"
+                },
+                {
+                    "id": 1,
+                    "name": "holderName",
+                    "value": "phuc thai"
+                },
+                {
+                    "id": 4,
+                    "name": "ccv",
+                    "value": "123"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "type": "Paypal",
+            "attributes": [
+                {
+                    "id": 5,
+                    "name": "email",
+                    "value": "thai@miu.edu"
+                }
+            ]
+        }
+    ],
+    "preferredPayment": 1
+}

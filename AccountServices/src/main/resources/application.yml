@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: account-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3308/account-service
+    username: root
+    password: dbadmin
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        format_sql: true
+
+    show-sql: true
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+
+  main:
+    allow-bean-definition-overriding: true
+
+server:
+  port: 5001
