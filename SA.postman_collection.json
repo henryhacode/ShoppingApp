@@ -1,0 +1,327 @@
+{
+	"info": {
+		"_postman_id": "7db0b907-a82b-47d9-bb73-8d195ac24516",
+		"name": "SA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21887350"
+	},
+	"item": [
+		{
+			"name": "Project1",
+			"item": [
+				{
+					"name": "Run Batch ADMIN",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZXMiOlsiQURNSU4iXSwiaWF0IjoxNTE2MjM5MDIyfQ.YwffPkshODWNOgO8snuQsEMjW7coOhlBfmE_uI0Lq4s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Run Batch VIEWER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZXMiOlsiVklFV0VSIl0sImlhdCI6MTUxNjIzOTAyMn0.3P-W-uUPOwkWq7HtSnD4honjdflV7KX25W4VYl_nSfI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"batch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project2",
+			"item": [
+				{
+					"name": "AccountService",
+					"item": [
+						{
+							"name": "Get Account Info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Shipping Address",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"street\": \"1000 N 4th St\",\n    \"city\": \"Fairfield\",\n    \"state\": \"IA\",\n    \"zipCode\": \"52557\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/addresses/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										"addresses",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Shipping Address",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"street\": \"1000 N 4th St\",\n    \"city\": \"Fairfield\",\n    \"state\": \"IA\",\n    \"zipCode\": \"52557\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/addresses/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										"addresses",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Preferred Shipping Address",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/addresses/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										"addresses",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Payment Method",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"CreditCard\",\n    \"attributes\": [\n        {\n            \"name\": \"holderName\",\n            \"value\": \"phuc thai\"\n        },\n        {\n            \"name\": \"number\",\n            \"value\": \"987654321\"\n        },\n        {\n            \"name\": \"ccv\",\n            \"value\": \"456\"\n        },\n        {\n            \"name\": \"expiredDate\",\n            \"value\": \"09/2028\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/payments/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										"payments",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Payment Method",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/payments/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										"payments",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Set Preferred Payment Method",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/accounts/thai@miu.edu/payments/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"accounts",
+										"thai@miu.edu",
+										"payments",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Keycloak",
+					"item": [
+						{
+							"name": "Get KeyCloak token",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Yvhd7uSP0krdOb5fanvH1DWKIKsUyZqT",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "sa-mini-project2",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "phat",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8000/auth/realms/sa-mini-project2-realm-dev/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"auth",
+										"realms",
+										"sa-mini-project2-realm-dev",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
