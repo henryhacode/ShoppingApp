@@ -45,7 +45,7 @@ public class AccountController {
 
     //Set preferred shipping address: PATCH
     @PatchMapping("{email}/addresses/{id}")
-    public AccountDto setPreferredShippingAddress(@PathVariable String email, int id){
+    public AccountDto setPreferredShippingAddress(@PathVariable String email, @PathVariable int id){
         System.out.println("setPreferredShippingAddress");
         System.out.println("PATCH /accounts/"+email+"/addresses/"+id);
         return accountService.setPreferredShippingAddress(email, id);
@@ -65,7 +65,7 @@ public class AccountController {
 
     //Set preferred payment method: PATCH
     @PatchMapping("{email}/payments/{id}")
-    public AccountDto setPreferredPaymentMethod(@PathVariable String email, int id) {
+    public AccountDto setPreferredPaymentMethod(@PathVariable String email, @PathVariable int id) {
         return accountService.setPreferredPaymentMethod(email, id);
     }
 }
