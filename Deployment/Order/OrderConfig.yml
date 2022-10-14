@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-config
+  labels:
+    app: order
+data:
+  DB_URL: jdbc:mysql://orderdb-svc:5003/shopping
+  ORDER_PORT: "5503"

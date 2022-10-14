@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: orderdb-config
+  labels:
+    app: orderdb
+data:
+  MYSQL_ROOT_PASSWORD: dbadmin
+  MYSQL_DATABASE: shopping
