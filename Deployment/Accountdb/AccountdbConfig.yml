@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: accountdb-config
+  labels:
+    app: accountdb
+data:
+  MYSQL_ROOT_PASSWORD: dbadmin
+  MYSQL_DATABASE: accountdb
