@@ -3,7 +3,8 @@ spring:
     name: account-service
 
   datasource:
-    url: jdbc:mysql://localhost:3308/account-service
+#    url: jdbc:mysql://localhost:3308/account-service
+    url: ${ACCOUNT_DB_URL}
     username: root
     password: dbadmin
 
@@ -33,4 +34,5 @@ spring:
     allow-bean-definition-overriding: true
 
 server:
-  port: 5001
+  port: ${ACCOUNT_SERVICE_PORT}
+#  port: 5001
