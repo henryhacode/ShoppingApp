@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDto {
+    private int id;
     private String name;
     private String vendor;
     private String category;

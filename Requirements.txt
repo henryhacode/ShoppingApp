@@ -221,3 +221,15 @@ Sample output:
     ],
     "preferredPayment": 1
 }
+
+======
+Product Service
+
+{
+    "id": 1,
+    "name": "iphone 14 pro max",
+    "vendor": "apple",
+    "category": "phone",
+    "description": "description iphone",
+    "units": 100
+}
