@@ -1,0 +1,29 @@
+// This file must be in the /proto directory
+syntax = "proto3";
+
+package com.shopping;
+
+option java_multiple_files = true;
+option java_package = "com.shopping.proto";
+option java_outer_classname = "PaymentProto";
+option objc_class_prefix = "PMT";
+
+service Payment {
+  rpc processPayment (PaymentRequest) returns (PaymentReply) {}
+}
+
+message PaymentRequest {
+  string type = 1; // CREDIT, PAYPAL
+  double amount = 2;
+  // CREDIT
+  string cardNumber = 3;
+  string expireDate = 4;
+  string cvc = 5;
+  string cardHolder = 6;
+  // PAYPAL
+  string email = 7;
+}
+
+message PaymentReply {
+  bool success = 1;
+}
