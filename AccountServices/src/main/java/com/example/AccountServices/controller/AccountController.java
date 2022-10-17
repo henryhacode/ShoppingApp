@@ -24,7 +24,7 @@ public class AccountController {
     @GetMapping("{email}")
     public AccountDto findByEmail(@PathVariable String email){
         System.out.println("findByEmail, GET /accounts/" + email);
-        if(!verifyEmail(email)) return null;
+        //if(!verifyEmail(email)) return null;
         return accountService.findByEmail(email);
     }
 
@@ -32,7 +32,7 @@ public class AccountController {
     @PutMapping("{email}/addresses")
     public AccountDto addShippingAddress(@PathVariable String email, @RequestBody Address address){
         System.out.println("addShippingAddress, PUT /accounts/"+email+"/addresses");
-        if(!verifyEmail(email)) return null;
+//        if(!verifyEmail(email)) return null;
         return accountService.addShippingAddress(email, address);
     }
 
@@ -40,7 +40,7 @@ public class AccountController {
     @DeleteMapping("{email}/addresses/{id}")
     public AccountDto removeShippingAddress(@PathVariable String email, @PathVariable int id){
         System.out.println("removeShippingAddress, DELETE /accounts/"+email+"/addresses/"+id);
-        if(!verifyEmail(email)) return null;
+//        if(!verifyEmail(email)) return null;
         return accountService.removeShippingAddress(email, id);
     }
 
@@ -48,7 +48,7 @@ public class AccountController {
     @PatchMapping("{email}/addresses/{id}")
     public AccountDto setPreferredShippingAddress(@PathVariable String email, @PathVariable int id){
         System.out.println("setPreferredShippingAddress, PATCH /accounts/"+email+"/addresses/"+id);
-        if(!verifyEmail(email)) return null;
+//        if(!verifyEmail(email)) return null;
         return accountService.setPreferredShippingAddress(email, id);
     }
 
@@ -56,7 +56,7 @@ public class AccountController {
     @PutMapping("{email}/payments")
     public AccountDto addPaymentMethod(@PathVariable String email, @RequestBody Payment payment){
         System.out.println("addPaymentMethod");
-        if(!verifyEmail(email)) return null;
+//        if(!verifyEmail(email)) return null;
         return accountService.addPaymentMethod(email, payment);
     }
 
@@ -64,7 +64,7 @@ public class AccountController {
     @DeleteMapping("{email}/payments/{id}")
     public AccountDto removePaymentMethod(@PathVariable String email, @PathVariable int id){
         System.out.println("removePaymentMethod");
-        if(!verifyEmail(email)) return null;
+//        if(!verifyEmail(email)) return null;
         return accountService.removePaymentMethod(email, id);
     }
 
@@ -72,7 +72,7 @@ public class AccountController {
     @PatchMapping("{email}/payments/{id}")
     public AccountDto setPreferredPaymentMethod(@PathVariable String email, @PathVariable int id) {
         System.out.println("setPreferredPaymentMethod");
-        if(!verifyEmail(email)) return null;
+//        if(!verifyEmail(email)) return null;
         return accountService.setPreferredPaymentMethod(email, id);
     }
 

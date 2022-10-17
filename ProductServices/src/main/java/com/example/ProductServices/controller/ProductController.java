@@ -30,8 +30,8 @@ public class ProductController {
     @PostMapping("")
     public ProductDto addProduct(@RequestBody Product product){
         System.out.println("addProduct");
-        if(!TokenUserDetail.hasRoleAdmin())
-            return null;
+//        if(!TokenUserDetail.hasRoleAdmin())
+//            return null;
         return productService.addProduct(product);
     }
 
@@ -39,8 +39,8 @@ public class ProductController {
     @DeleteMapping("{id}")
     public ProductDto deleteProduct(@PathVariable int id){
         System.out.println("deleteProduct");
-        if(!TokenUserDetail.hasRoleAdmin())
-            return null;
+//        if(!TokenUserDetail.hasRoleAdmin())
+//            return null;
         return productService.deleteProduct(id);
     }
 
@@ -48,8 +48,8 @@ public class ProductController {
     @PutMapping("")
     public ProductDto updateProduct(@RequestBody Product product){
         System.out.println("updateProduct");
-        if(!TokenUserDetail.hasRoleAdmin())
-            return null;
+//        if(!TokenUserDetail.hasRoleAdmin())
+//            return null;
         return productService.updateProduct(product);
     }
 
@@ -57,8 +57,8 @@ public class ProductController {
     @PatchMapping("{id}/{num}")
     public ProductDto orderProduct(@PathVariable int id, @PathVariable int num){
         System.out.println("orderProduct");
-        if(!TokenUserDetail.hasRoleUser())
-            return null;
+//        if(!TokenUserDetail.hasRoleUser())
+//            return null;
         return productService.orderProduct(id, num);
     }
 
@@ -66,8 +66,8 @@ public class ProductController {
     @PostMapping("{id}/{num}")
     public ProductDto addStock(@PathVariable int id, @PathVariable int num){
         System.out.println("addStock");
-        if(!TokenUserDetail.hasRoleAdmin())
-            return null;
+//        if(!TokenUserDetail.hasRoleAdmin())
+//            return null;
         return productService.addStock(id, num);
     }
 }
