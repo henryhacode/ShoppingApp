@@ -7,6 +7,10 @@ metadata:
 data:
   MYSQL_ROOT_PASSWORD: dbadmin
 
+  KEYCLOAK_TRANSACTION_SERVICE_URL: keycloak-service:5510
+  KEYCLOAK_TRANSACTION_SERVICE_PORT: "5510"
+  KEYCLOAK_SERVICE_ISSUER_URI: keycloak-service:5510/auth/realms/sa-mini-project2-realm-dev
+
   ACCOUNT_DB_URL: jdbc:mysql://accountdb-svc:5001/accountdb
   ACCOUNT_SERVICE_URL: account-service:5501
   ACCOUNT_SERVICE_PORT: "5501"
@@ -43,5 +47,3 @@ data:
   BANK_TRANSACTION_SERVICE_URL: bank-service:5509
   BANK_TRANSACTION_SERVICE_PORT: "5509"
 
-  KEYCLOAK_TRANSACTION_SERVICE_URL: keycloak-service:5510
-  KEYCLOAK_TRANSACTION_SERVICE_PORT: "5510"

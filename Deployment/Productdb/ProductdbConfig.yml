@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: productdb-config
+  labels:
+    app: productdb
+data:
+  MYSQL_DATABASE: productdb

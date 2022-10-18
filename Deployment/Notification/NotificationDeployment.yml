@@ -20,13 +20,13 @@ spec:
         app: notification
     spec:
       containers:
-      - name: notification-service
-        image: notification:latest
-        imagePullPolicy: "IfNotPresent"
-        ports:
-          - name: http
-            containerPort: 5506
-        envFrom:
-          - configMapRef:
-              name: common-config
+        - name: notification-service
+          image: notification:latest
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - name: http
+              containerPort: 5506
+          envFrom:
+            - configMapRef:
+                name: common-config
       terminationGracePeriodSeconds: 1
