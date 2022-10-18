@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-deployment
+  labels:
+    app: product
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+      - name: product-service
+        image: product:latest
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - name: http
+            containerPort: 5501
+        envFrom:
+          - configMapRef:
+              name: common-config
+      terminationGracePeriodSeconds: 1

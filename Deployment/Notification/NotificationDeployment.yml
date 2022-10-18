@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+  labels:
+    app: notification
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      labels:
+        app: notification
+    spec:
+      containers:
+      - name: notification-service
+        image: notification:latest
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - name: http
+            containerPort: 5506
+        envFrom:
+          - configMapRef:
+              name: common-config
+      terminationGracePeriodSeconds: 1
