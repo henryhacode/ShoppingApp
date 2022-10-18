@@ -25,6 +25,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: common-config
-            - configMapRef:
-                name: accountdb-config
+#            - configMapRef:
+#                name: accountdb-config
       terminationGracePeriodSeconds: 1

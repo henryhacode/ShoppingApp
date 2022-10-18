@@ -3,7 +3,7 @@ spring:
     name: account-service
 
   datasource:
-    url: jdbc:mysql://localhost:3301/account-service
+    url: jdbc:mysql://localhost:3301/accountdb
 #    url: ${ACCOUNT_DB_URL}
     username: root
     password: dbadmin
