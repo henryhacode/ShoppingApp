@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment-deployment
+  labels:
+    app: payment
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: payment
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+      - name: payment-service
+        image: payment:latest
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - name: http
+            containerPort: 5504
+        envFrom:
+          - configMapRef:
+              name: common-config
+      terminationGracePeriodSeconds: 1
