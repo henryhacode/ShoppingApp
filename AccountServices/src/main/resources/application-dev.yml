@@ -3,8 +3,8 @@ spring:
     name: account-service
 
   datasource:
-#    url: jdbc:mysql://localhost:3301/account-service
-    url: ${ACCOUNT_DB_URL}
+    url: jdbc:mysql://localhost:3301/account-service
+#    url: ${ACCOUNT_DB_URL}
     username: root
     password: dbadmin
 
@@ -37,9 +37,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-#          issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
-          issuer-uri: ${KEYCLOAK_SERVICE_ISSUER_URI}
+          issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
 
 server:
-#  port: 5001
-  port: ${ACCOUNT_SERVICE_PORT}
+#  port: ${ACCOUNT_SERVICE_PORT}
+  port: 5001

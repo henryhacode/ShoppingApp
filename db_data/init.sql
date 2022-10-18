@@ -1,18 +1,18 @@
-create table products (
-                          id integer not null auto_increment,
-                          category varchar(255),
-                          description varchar(255),
-                          name varchar(255),
-                          units integer not null,
-                          vendor varchar(255),
-                          primary key (id)
-);
-
-INSERT INTO products(name, vendor, category, description, units)
-VALUES
-    ('iphone 14 pro max', 'apple', 'phone', 'description iphone', 100),
-    ('macbook air m2', 'apple', 'laptop', 'description macbook', 10),
-    ('samsung s22 plus', 'samsung', 'phone', 'description samsung s', 50),
-    ('harry porter', 'amazon', 'book', 'description book', 2),
-    ('cap', 'adidas', 'clothes', 'adidas cap', 2)
-    ;
+-- create table products (
+--                           id integer not null auto_increment,
+--                           category varchar(255),
+--                           description varchar(255),
+--                           name varchar(255),
+--                           units integer not null,
+--                           vendor varchar(255),
+--                           primary key (id)
+-- );
+--
+-- INSERT INTO products(name, vendor, category, description, units)
+-- VALUES
+--     ('iphone 14 pro max', 'apple', 'phone', 'description iphone', 100),
+--     ('macbook air m2', 'apple', 'laptop', 'description macbook', 10),
+--     ('samsung s22 plus', 'samsung', 'phone', 'description samsung s', 50),
+--     ('harry porter', 'amazon', 'book', 'description book', 2),
+--     ('cap', 'adidas', 'clothes', 'adidas cap', 2)
+--     ;

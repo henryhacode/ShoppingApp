@@ -37,9 +37,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-#          issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
-          issuer-uri: ${KEYCLOAK_SERVICE_ISSUER_URI}
+          issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
 
 server:
-#  port: 5006
-  port: ${NOTIFICATION_SERVICE_PORT}
+#  port: ${NOTIFICATION_SERVICE_PORT}
+  port: 5006
