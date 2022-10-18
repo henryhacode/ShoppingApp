@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentdb-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: paymentdb
+  template:
+    metadata:
+      labels:
+        app: paymentdb
+    spec:
+      containers:
+        - name: paymentdb
+          image: mysql:8.0
+          ports:
+            - name: mysql
+              containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: common-config
+            - configMapRef:
+                name: paymentdb-config
+      terminationGracePeriodSeconds: 1

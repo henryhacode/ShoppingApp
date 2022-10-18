@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: paymentdb-config
+  labels:
+    app: paymentdb
+data:
+  MYSQL_DATABASE: paymentdb
