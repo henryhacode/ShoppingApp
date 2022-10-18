@@ -2,6 +2,7 @@ kubectl delete -f CommonConfig.yml
 
 kubectl delete -f Keycloak/KeycloakService.yml
 kubectl delete -f Keycloak/KeycloakDeployment.yml
+kubectl delete -f Keycloak/KeycloakConfig.yml
 
 kubectl delete -f Account/AccountService.yml
 kubectl delete -f Account/AccountDeployment.yml

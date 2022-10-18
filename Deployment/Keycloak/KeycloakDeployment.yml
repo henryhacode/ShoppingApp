@@ -1,11 +1,64 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: keycloak
+#  labels:
+#    app: keycloak
+#spec:
+#  replicas: 1
+#  selector:
+#    matchLabels:
+#      app: keycloak
+#  template:
+#    metadata:
+#      labels:
+#        app: keycloak
+#    spec:
+#      containers:
+#        - name: keycloak
+#          image: quay.io/keycloak/keycloak:19.0.2
+#          args: ["start-dev", "--import-realm"]
+#          env:
+#            - name: KEYCLOAK_ADMIN
+#              value: "admin"
+#            - name: KEYCLOAK_ADMIN_PASSWORD
+#              value: "admin"
+#            - name: KC_PROXY
+#              value: "edge"
+#
+#          volumeMounts:
+#            - mountPath: /opt/keycloak/data/import
+#              name: import
+#            - mountPath: /tmp/export
+#              name: export
+#
+#          ports:
+#            - name: http
+#              containerPort: 8080
+#          readinessProbe:
+#            httpGet:
+#              path: /realms/master
+#              port: 8080
+#      volumes:
+#        - name: import
+#          hostPath:
+#            path: /opt/keycloak/data/import
+#        - name: export
+#          hostPath:
+#            path: /tmp/export
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: keycloak
+  name: keycloak-deployment
   labels:
     app: keycloak
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
   selector:
     matchLabels:
       app: keycloak
@@ -15,34 +68,37 @@ spec:
         app: keycloak
     spec:
       containers:
-        - name: keycloak
+        - name: keycloak-service
           image: quay.io/keycloak/keycloak:19.0.2
-          args: ["start-dev", "--import-realm"]
-          env:
-            - name: KEYCLOAK_ADMIN
-              value: "admin"
-            - name: KEYCLOAK_ADMIN_PASSWORD
-              value: "admin"
-            - name: KC_PROXY
-              value: "edge"
-
-          volumeMounts:
-            - mountPath: /opt/keycloak/data/import
-              name: import
-            - mountPath: /tmp/export
-              name: export
-
+          args: [ "start-dev", "--import-realm" ]
+          imagePullPolicy: "IfNotPresent"
           ports:
             - name: http
               containerPort: 8080
+          env:
+            - name: KEYCLOAK_ADMIN
+              value: admin
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              value: admin
+            - name: KEYCLOAK_IMPORT
+#              value: /import/realm.json
+              value: /opt/keycloak/data/import/realm.json
+            - name: KC_PROXY
+              value: "edge"
+          volumeMounts:
+#            - mountPath: /import
+            - mountPath: /opt/keycloak/data/import
+              name: keycloak-volume
           readinessProbe:
             httpGet:
+#              path: /auth/realms/master
               path: /realms/master
               port: 8080
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          resources: {}
       volumes:
-        - name: import
-          hostPath:
-            path: /opt/keycloak/data/import
-        - name: export
-          hostPath:
-            path: /tmp/export
+        - name: keycloak-volume
+          configMap:
+            name: keycloak-configmap
+status: {}

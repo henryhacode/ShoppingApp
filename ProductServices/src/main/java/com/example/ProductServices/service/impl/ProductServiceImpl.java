@@ -9,6 +9,7 @@ import com.example.ProductServices.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,6 +19,8 @@ import org.springframework.web.client.RestTemplate;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final ModelMapper mapper;
+
+    private final Environment environment;
 
     @Override
     public ProductDto findById(int id){
@@ -56,8 +59,17 @@ public class ProductServiceImpl implements ProductService {
             throw new MyException("units negative");
         }
 
-        if(newUnits < 50){
-            String url = "http://localhost:5006/notifications";
+        int thresholdUnits = 50;
+        try {
+            thresholdUnits = Integer.parseInt(environment.getProperty("PRODUCT_THRESHOLD_UNITS"));
+        }catch (Exception e){
+            thresholdUnits = 50;
+        }
+        if(newUnits < thresholdUnits){
+//            String url = "http://localhost:5006/notifications";
+            String url = environment.getProperty("NOTIFICATION_SERVICE_URL") + "/" + "notifications";
+            System.out.println("url: " + url);
+
             NotificationDto notification = new NotificationDto();
             notification.setEmail("hong.thai@miu.edu");
             notification.setSubject("from Product Service");

@@ -1,9 +1,61 @@
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: accountdb-config
-  labels:
-    app: accountdb
 data:
-  MYSQL_DATABASE: accountdb
+  accountdb.sql: |-
+    CREATE DATABASE accountdb;
+    USE accountdb;
+    create table accounts (
+                            id integer not null auto_increment,
+                            email varchar(255),
+                            first_name varchar(255),
+                            last_name varchar(255),
+                            preferred_payment integer not null,
+                            preferred_shipping integer not null,
+                            primary key (id)
+    );
+    
+    create table accounts_payment_methods (
+                                            account_id integer not null,
+                                            payment_methods_id integer not null
+    );
+    
+    create table accounts_shipping_addresses (
+                                                account_id integer not null,
+                                                shipping_addresses_id integer not null
+    );
+    
+    create table address (
+                            id integer not null auto_increment,
+                            city varchar(255),
+                            state varchar(255),
+                            street varchar(255),
+                            zip_code varchar(255),
+                            primary key (id)
+    );
+    
+    create table payment (
+                            id integer not null auto_increment,
+                            type varchar(255),
+                            primary key (id)
+    );
+    
+    create table payment_attributes (
+                                        payment_id integer not null,
+                                        attributes_id integer not null,
+                                        primary key (payment_id, attributes_id)
+    );
+    
+    create table payment_attribute (
+                                    id integer not null auto_increment,
+                                    name varchar(255),
+                                    value varchar(255),
+                                    primary key (id)
+    );
+    
+    INSERT INTO accounts(first_name, last_name, email, preferred_payment, preferred_shipping)
+    VALUES
+        ('phat', 'nguyen', 'phatnguyen@outlook.com', 0, 0),
+        ('thiep', 'ha', 'thiep@gmail.com', 0, 0),
+        ('phuc', 'thai', 'thai@miu.edu', 0, 0);

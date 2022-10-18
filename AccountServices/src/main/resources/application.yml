@@ -39,6 +39,9 @@ spring:
         jwt:
 #          issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
           issuer-uri: ${KEYCLOAK_SERVICE_ISSUER_URI}
+#          jwk-set-uri: http://sa-keycloak:9090/realms/sa-mini-project1-realm-prod/protocol/openid-connect/certs
+          jwk-set-uri: ${KEYCLOAK_SERVICE_JWK_SET_URI}
+
 
 server:
 #  port: 5001

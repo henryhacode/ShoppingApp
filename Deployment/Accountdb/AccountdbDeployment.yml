@@ -8,6 +8,8 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 100%
+  #  strategy:
+  #    type: Recreate
   selector:
     matchLabels:
       app: accountdb
@@ -25,6 +27,20 @@ spec:
           envFrom:
             - configMapRef:
                 name: common-config
-#            - configMapRef:
-#                name: accountdb-config
-      terminationGracePeriodSeconds: 1
+            - configMapRef:
+                name: accountdb-config
+          #          env:
+          #            - name: MYSQL_ROOT_PASSWORD
+          #              value: dbpassword11
+          volumeMounts:
+            #            - name: mysql-persistent-storage
+            #              mountPath: /var/lib/mysql
+            - name: accountdb-config
+              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/mysql Refer Initializing a fresh instance
+      volumes:
+        #        - name: mysql-persistent-storage
+        #          persistentVolumeClaim:
+        #            claimName: ebs-mysql-pv-claim
+        - name: accountdb-config
+          configMap:
+            name: accountdb-config

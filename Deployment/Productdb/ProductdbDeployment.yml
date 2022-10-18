@@ -5,9 +5,11 @@ metadata:
 spec:
   replicas: 1
   strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 100%
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 100%
+  #  strategy:
+  #    type: Recreate
   selector:
     matchLabels:
       app: productdb
@@ -25,6 +27,20 @@ spec:
           envFrom:
             - configMapRef:
                 name: common-config
-#            - configMapRef:
-#                name: productdb-config
-      terminationGracePeriodSeconds: 1
+            - configMapRef:
+                name: productdb-config
+#          env:
+#            - name: MYSQL_ROOT_PASSWORD
+#              value: dbpassword11
+          volumeMounts:
+#            - name: mysql-persistent-storage
+#              mountPath: /var/lib/mysql
+            - name: productdb-config
+              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/mysql Refer Initializing a fresh instance
+      volumes:
+#        - name: mysql-persistent-storage
+#          persistentVolumeClaim:
+#            claimName: ebs-mysql-pv-claim
+        - name: productdb-config
+          configMap:
+            name: productdb-config

@@ -1,5 +1,6 @@
 kubectl apply -f CommonConfig.yml
 
+kubectl apply -f Keycloak/KeycloakConfig.yml
 kubectl apply -f Keycloak/KeycloakService.yml
 kubectl apply -f Keycloak/KeycloakDeployment.yml
 
