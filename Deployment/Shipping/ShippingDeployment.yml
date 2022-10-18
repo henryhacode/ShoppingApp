@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping-deployment
+  labels:
+    app: shipping
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: shipping
+  template:
+    metadata:
+      labels:
+        app: shipping
+    spec:
+      containers:
+      - name: shipping-service
+        image: shipping:latest
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - name: http
+            containerPort: 5505
+        envFrom:
+          - configMapRef:
+              name: common-config
+      terminationGracePeriodSeconds: 1
