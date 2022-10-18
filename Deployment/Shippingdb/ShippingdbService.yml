@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shippingdb-svc
+spec:
+  type: NodePort
+  selector:
+    app: shippingdb
+  ports:
+    - protocol: TCP
+      port: 5005
+      targetPort: 3306

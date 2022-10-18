@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shippingdb-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: shippingdb
+  template:
+    metadata:
+      labels:
+        app: shippingdb
+    spec:
+      containers:
+        - name: shippingdb
+          image: mysql:8.0
+          ports:
+            - name: mysql
+              containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: common-config
+            - configMapRef:
+                name: shippingdb-config
+      terminationGracePeriodSeconds: 1

@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shippingdb-config
+  labels:
+    app: shippingdb
+data:
+  MYSQL_DATABASE: shippingdb
