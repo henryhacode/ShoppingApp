@@ -26,6 +26,7 @@ public class PaymentController {
 
     @PostMapping
     public void save(@RequestBody Payment payment) {
+        System.out.println("Post payment controller");
         System.out.println(payment);
         paymentService.process(payment);
     }

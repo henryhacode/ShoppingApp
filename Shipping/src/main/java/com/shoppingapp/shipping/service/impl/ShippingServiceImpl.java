@@ -25,8 +25,11 @@ public class ShippingServiceImpl implements ShippingService {
 
     @Override
     public void process(Shipping shipping) {
+        System.out.println("====== Shipping: Processing");
+        System.out.println(shipping);
         // save (process)
         shippingRepository.save(shipping);
+        System.out.println("====== Shipping: DONE");
 
         // call notification
     }

@@ -25,7 +25,10 @@ public class BankTransactionServiceImpl implements BankTransactionService {
 
     @Override
     public void save(BankTransaction bankTransaction) {
+        System.out.println("==== Bank Transaction: Processing");
+        System.out.println(bankTransaction);
         transactionRepository.save(bankTransaction);
+        System.out.println("==== Bank Transaction: DONE");
     }
 
     @Override

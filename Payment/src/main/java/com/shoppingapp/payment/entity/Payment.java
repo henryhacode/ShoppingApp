@@ -32,5 +32,33 @@ public class Payment {
     String accountNo;
     String bankHolder;
 
-    Double amount;
+    Double total;
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Payment{" +
+                "id=" + id +
+                ", type='" + type + '\'');
+        switch (type) {
+            case "CREDIT":
+                sb.append(", cardNumber='" + cardNumber + '\'' +
+                        ", expireDate='" + expireDate + '\'' +
+                        ", cvc='" + cvc + '\'' +
+                        ", creditHolder='" + creditHolder + '\'');
+                break;
+            case "PAYPAL":
+                sb.append(", email='" + email + '\'');
+                break;
+            default:
+                sb.append(", bankName='" + bankName + '\'' +
+                        ", accountNo='" + accountNo + '\'' +
+                        ", bankHolder='" + bankHolder + '\'');
+                break;
+        }
+        sb.append(", total=" + total +
+                '}');
+        return sb.toString();
+    }
+
 }

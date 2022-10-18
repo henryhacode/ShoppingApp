@@ -5,11 +5,10 @@ import com.shoppingapp.payment.repository.PaymentRepository;
 import com.shoppingapp.payment.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -18,6 +17,7 @@ import java.util.List;
 public class PaymentServiceImpl implements PaymentService {
     private final PaymentRepository paymentRepository;
     private final Environment environment;
+    private final RestTemplate restTemplate;
 
     @Override
     public List<Payment> findAll() {
@@ -31,12 +31,13 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void process(Payment payment) {
-        System.out.println("Process payment");
+        System.out.println("====== Payment: processing");
         System.out.println(payment);
         String type = payment.getType();
         if (type == null) {
             type = "CREDIT";
         }
+        // TODO: get subUrl from env
         String subUrl = "";
         switch (type) {
             case "CREDIT":
@@ -58,16 +59,22 @@ public class PaymentServiceImpl implements PaymentService {
             return;
         }
 
-        WebClient webClient = WebClient.create(transactionUrl);
-        webClient.post()
-                .uri(subUrl)
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .body(Mono.just(payment), Payment.class)
-                .retrieve()
-                .bodyToMono(void.class);
+        try {
+            transactionUrl += subUrl;
+            System.out.println("Calling payment service " + transactionUrl);
+            HttpHeaders headers = new HttpHeaders();
+            headers.set("Content-Type", "application/json");
+            HttpEntity<Payment> entity = new HttpEntity<>(payment, headers);
+            restTemplate.postForEntity(transactionUrl, entity, Void.class);
+            System.out.println("Process at specific transaction: DONE--------");
+        } catch (Exception ex) {
+            System.out.println("==============  Error calling transaction " + ex);
+        }
 
         // store value
         paymentRepository.save(payment);
+
+        System.out.println("====== Payment: all DONE");
     }
 
     @Override

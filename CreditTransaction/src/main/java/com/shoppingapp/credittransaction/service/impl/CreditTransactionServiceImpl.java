@@ -25,7 +25,10 @@ public class CreditTransactionServiceImpl implements CreditTransactionService {
 
     @Override
     public void save(CreditTransaction creditTransaction) {
+        System.out.println("Credit transaction: processing----");
+        System.out.println(creditTransaction);
         creditRepository.save(creditTransaction);
+        System.out.println("Credit transaction: DONE ----");
     }
 
     @Override

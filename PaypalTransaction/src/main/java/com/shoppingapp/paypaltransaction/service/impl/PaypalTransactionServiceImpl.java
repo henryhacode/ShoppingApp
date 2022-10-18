@@ -25,7 +25,10 @@ public class PaypalTransactionServiceImpl implements PaypalTransactionService {
 
     @Override
     public void save(PaypalTransaction paypalTransaction) {
+        System.out.println("==== Bank Transaction: Processing");
+        System.out.println(paypalTransaction);
         paypalRepository.save(paypalTransaction);
+        System.out.println("==== Bank Transaction: DONE");
     }
 
     @Override
