@@ -1,0 +1,44 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: common-config
+
+data:
+  MYSQL_ROOT_PASSWORD: dbadmin
+
+  ACCOUNT_DB_URL: jdbc:mysql://accountdb-svc:5001/accountdb
+  ACCOUNT_SERVICE_URL: account-service:5501
+  ACCOUNT_SERVICE_PORT: "5501"
+
+  PRODUCT_DB_URL: jdbc:mysql://productdb-svc:5002/productdb
+  PRODUCT_SERVICE_URL: product-service:5502
+  PRODUCT_SERVICE_PORT: "5502"
+
+  ORDER_DB_URL: jdbc:mysql://orderdb-svc:5003/orderdb
+  ORDER_SERVICE_URL: order-service:5003
+  ORDER_SERVICE_PORT: "5503"
+
+  PAYMENT_DB_URL: jdbc:mysql://paymentdb-svc:5004/paymentdb
+  PAYMENT_SERVICE_URL: payment-service:5504
+  PAYMENT_SERVICE_PORT: "5504"
+
+  SHIPPING_DB_URL: jdbc:mysql://shippingdb-svc:5005/shippingdb
+  SHIPPING_SERVICE_URL: shipping-service:5505
+  SHIPPING_SERVICE_PORT: "5505"
+
+  NOTIFICATION_DB_URL: jdbc:mysql://notificationdb-svc:5006/notificationdb
+  NOTIFICATION_SERVICE_URL: notification-service:5506
+  NOTIFICATION_SERVICE_PORT: "5506"
+
+  CREDIT_TRANSACTION_DB_URL: jdbc:mysql://creditdb-svc:5007/creditdb
+  CREDIT_TRANSACTION_SERVICE_URL: credit-service:5507
+  CREDIT_TRANSACTION_SERVICE_PORT: "5507"
+
+  PAYPAL_TRANSACTION_DB_URL: jdbc:mysql://paypaldb-svc:5008/paypaldb
+  PAYPAL_TRANSACTION_SERVICE_URL: paypal-service:5508
+  PAYPAL_TRANSACTION_SERVICE_PORT: "5508"
+
+  BANK_TRANSACTION_DB_URL: jdbc:mysql://bankdb-svc:5009/bankdb
+  BANK_TRANSACTION_SERVICE_URL: bank-service:5509
+  BANK_TRANSACTION_SERVICE_PORT: "5509"

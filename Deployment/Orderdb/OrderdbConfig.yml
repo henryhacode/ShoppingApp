@@ -6,5 +6,4 @@ metadata:
   labels:
     app: orderdb
 data:
-  MYSQL_ROOT_PASSWORD: dbadmin
-  MYSQL_DATABASE: shopping
+  MYSQL_DATABASE: orderdb

@@ -28,5 +28,5 @@ spec:
             containerPort: 5501
         envFrom:
           - configMapRef:
-              name: account-config
+              name: common-config
       terminationGracePeriodSeconds: 1

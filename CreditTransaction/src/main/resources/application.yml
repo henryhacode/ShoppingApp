@@ -4,7 +4,7 @@ spring:
 
   datasource:
 #    url: jdbc:mysql://localhost:5001/creditdb
-    url: ${DB_URL}
+    url: ${CREDIT_TRANSACTION_DB_URL}
 #    url: jdbc:mysql://shoppingdb:3306/creditdb
     username: root
     password: dbadmin
@@ -30,4 +30,4 @@ spring:
     allow-bean-definition-overriding: true
 
 server:
-  port: ${CREDIT_TRANS_PORT}
+  port: ${CREDIT_TRANSACTION_SERVICE_PORT}

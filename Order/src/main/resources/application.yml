@@ -4,7 +4,7 @@ spring:
 
   datasource:
 #    url: jdbc:mysql://localhost:5001/orderdb
-    url: ${DB_URL}
+    url: ${ORDER_DB_URL}
 #    url: jdbc:mysql://shoppingdb:3306/orderdb
     username: root
     password: dbadmin
@@ -30,4 +30,4 @@ spring:
     allow-bean-definition-overriding: true
 
 server:
-  port: ${ORDER_PORT}
+  port: ${ORDER_SERVICE_PORT}

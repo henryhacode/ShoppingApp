@@ -24,5 +24,7 @@ spec:
               containerPort: 3306
           envFrom:
             - configMapRef:
+                name: common-config
+            - configMapRef:
                 name: orderdb-config
       terminationGracePeriodSeconds: 1

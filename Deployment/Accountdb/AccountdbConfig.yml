@@ -6,5 +6,4 @@ metadata:
   labels:
     app: accountdb
 data:
-  MYSQL_ROOT_PASSWORD: dbadmin
   MYSQL_DATABASE: accountdb

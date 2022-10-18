@@ -4,7 +4,7 @@ spring:
 
 #  datasource:
 #    url: jdbc:mysql://localhost:3301/notification-service
-##    url: ${ACCOUNT_DB_URL}
+##    url: ${NOTIFICATION_DB_URL}
 #    username: root
 #    password: dbadmin
 #
@@ -40,5 +40,5 @@ spring:
           issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
 
 server:
-#  port: ${ACCOUNT_SERVICE_PORT}
+#  port: ${NOTIFICATION_SERVICE_PORT}
   port: 5006

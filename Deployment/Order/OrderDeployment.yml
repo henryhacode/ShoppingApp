@@ -28,5 +28,5 @@ spec:
             containerPort: 5503
         envFrom:
           - configMapRef:
-              name: order-config
+              name: common-config
       terminationGracePeriodSeconds: 1

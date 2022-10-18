@@ -30,4 +30,4 @@ spring:
     allow-bean-definition-overriding: true
 
 server:
-  port: ${PAYMENT_PORT}
+  port: ${PAYMENT_SERVICE_PORT}
