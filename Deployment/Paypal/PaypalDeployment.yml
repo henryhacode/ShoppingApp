@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paypal-deployment
+  labels:
+    app: paypal
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: paypal
+  template:
+    metadata:
+      labels:
+        app: paypal
+    spec:
+      containers:
+      - name: paypal-service
+        image: paypal:latest
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - name: http
+            containerPort: 5508
+        envFrom:
+          - configMapRef:
+              name: common-config
+      terminationGracePeriodSeconds: 1
