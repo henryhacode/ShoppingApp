@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paypaldb-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 100%
+  selector:
+    matchLabels:
+      app: paypaldb
+  template:
+    metadata:
+      labels:
+        app: paypaldb
+    spec:
+      containers:
+        - name: paypaldb
+          image: mysql:8.0
+          ports:
+            - name: mysql
+              containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: common-config
+            - configMapRef:
+                name: paypaldb-config
+      terminationGracePeriodSeconds: 1
