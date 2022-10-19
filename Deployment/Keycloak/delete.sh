@@ -1,2 +1,2 @@
-kubectl delete -f keycloakService.yml
-kubectl delete -f keycloakDeployment.yml
+kubectl delete -f KeycloakService.yml
+kubectl delete -f KeycloakDeployment.yml
