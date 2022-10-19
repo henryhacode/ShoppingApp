@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: credit-service
-        image: credit:latest
+        image: thiepha/credit:0.1
         imagePullPolicy: "IfNotPresent"
         ports:
           - name: http

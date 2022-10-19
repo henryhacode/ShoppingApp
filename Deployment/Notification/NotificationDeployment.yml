@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: notification-service
-          image: notification:latest
+          image: thiepha/notification:0.1
           imagePullPolicy: "IfNotPresent"
           ports:
             - name: http

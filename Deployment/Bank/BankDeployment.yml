@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: bank-service
-        image: bank:latest
+        image: thiepha/bank:0.1
         imagePullPolicy: "IfNotPresent"
         ports:
           - name: http

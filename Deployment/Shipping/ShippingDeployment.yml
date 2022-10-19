@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: shipping-service
-        image: shipping:latest
+        image: thiepha/shipping:0.1
         imagePullPolicy: "IfNotPresent"
         ports:
           - name: http

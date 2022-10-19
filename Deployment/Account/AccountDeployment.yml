@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: account-service
-          image: account:latest
+          image: thiepha/account:0.1
           imagePullPolicy: "IfNotPresent"
           ports:
             - name: http

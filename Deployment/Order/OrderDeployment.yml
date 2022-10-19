@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: order-service
-        image: order:latest
+        image: thiepha/order:0.1
         imagePullPolicy: "IfNotPresent"
         ports:
           - name: http

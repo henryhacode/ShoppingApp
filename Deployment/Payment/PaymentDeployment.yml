@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: payment-service
-        image: payment:latest
+        image: thiepha/payment:0.1
         imagePullPolicy: "IfNotPresent"
         ports:
           - name: http
