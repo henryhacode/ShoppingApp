@@ -1,15 +1,15 @@
-# SA Mini Project
+# SA Mini Project 2
 ## Members
-1. Thiep Ha
+1. Minh Thiep Ha
 2. Hong Phuc Thai
 
-### A 3 minute-video for the quick demo
-https://mum0-my.sharepoint.com/:v:/g/personal/tan_nguyen_miu_edu/EXyPpJKbJPVAnnx-uXLurEEBfS9x98lHcHX-alIOaYKZMg?e=yGC9xa
+### Github 
+https://github.com/henryhacode/ShoppingApp
 
 ## Build project
 1. Start docker.app
-<br>
-<br>
+
+
 2. Start minikube 
 ```
 $ cd ShoppingApp
@@ -24,28 +24,25 @@ $ minikube service product-service --url
 ```
 
 4. Manual setup Keycloak
-<br>
+
 a. Loggin to keyclock using IP from step 3 > Choose Sa-mini-project2-realm-dev real > Realm settings > Tab General:
-<br>   
-Change Frontend URL = http://keycloak-service:8080, 
-<br>
+
+Change Frontend URL = http://keycloak-service:8080,
    <img src="./markdown/Screen Shot 2022-10-18 at 8.02.24 PM.png" alt="Alt text" title="People">
-<br>
-<br>
+
 b. Loggin to keyclock using IP from step 3 > Choose Sa-mini-project2-realm-dev real > Realm settings > Tab Tokens:
-<br>   
+
 Change all settings to Days
-<br>
    <img src="./markdown/Screen Shot 2022-10-18 at 8.06.36 PM.png" alt="Alt text" title="People">
-<br>
-<br>
+
+
 5. Manual insert databases into accountdb (if data not auto generated)
-<br>
+
 a. Open CLI of accountdb pod
-<br>
    <img src="./markdown/Screen Shot 2022-10-18 at 8.20.25 PM.png" alt="Alt text" title="People">
-<br>
+
 b. Check if data was auto generated
+
 ```
 $ mysql -u root -p
 $ Enter password: dbadmin
@@ -53,9 +50,9 @@ $ mysql> SHOW DATABASES;
 $ mysql> USE accountdb;
 $ mysql> SELECT * FROM accounts;
 ```
-<br>   
+ 
 c. If there is no data generated, please run below commands to insert data
-<br>
+
 ```
 INSERT INTO accounts(first_name, last_name, email, preferred_payment, preferred_shipping)
 VALUES
@@ -67,11 +64,10 @@ VALUES
 
 
 6. Manual insert databases into productdb (if data not auto generated)
-<br>
+
 a. Open CLI of productdb pod
-<br>
    <img src="./markdown/Screen Shot 2022-10-18 at 8.10.32 PM.png" alt="Alt text" title="People">
-<br>
+
 b. Check if data was auto generated
 ```
 $ mysql -u root -p
@@ -81,6 +77,7 @@ $ mysql> USE productdb;
 $ mysql> SELECT * FROM products;
 ``` 
    c. If there is no data generated, please run below commands to insert data
+
 ```
 INSERT INTO products(name, vendor, category, description, units)
 VALUES
@@ -98,17 +95,18 @@ Start Postman, import provided file "SA.postman_collection.json"
 
 <b>A. Keycloak Service</b>
 1. Generate Token with notes:
-<br>
+
 a. Update correct IP in step 3
-<br>
+
 b. Authentication: 
 ```
 $ Username: sa-mini-project2
 $ Password: Yvhd7uSP0krdOb5fanvH1DWKIKsUyZqT
 ```
    <img src="./markdown/Screen Shot 2022-10-18 at 8.24.11 PM.png" alt="Alt text" title="People">
-<br>
+
 c. Body
+
 ```
 $ grant_type: password
 $ username: phat
@@ -118,9 +116,9 @@ $ password: 123
 
 <b>B. Account Service</b>
 1. Get Account Info:
-<br>
+
 a. Update correct IP in step 3
-<br>
+
 b. Authentication > Bearer Token
 ```
 $ Token: <get from Keycloak token>
@@ -128,16 +126,38 @@ $ Token: <get from Keycloak token>
    <img src="./markdown/Screen Shot 2022-10-18 at 8.57.53 PM.png" alt="Alt text" title="People">
 
 2. Similiar test cases for:
-<br>
-a. Add Shipping Address
-<br>
-b. Set Preferred Shipping Address
-<br>
-c. Delete Shipping Address
-<br>
-d. Add Payment Method
-<br>
-e. Set Preferred Payment Method
-<br>
-f. Delete Payment Method
+```
+- Add Shipping Address
+- Set Preferred Shipping Address
+- Delete Shipping Address
+- Add Payment Method
+- Set Preferred Payment Method
+- Delete Payment Method
+```
 <img src="./markdown/Screen Shot 2022-10-18 at 9.07.20 PM.png" alt="Alt text" title="People">
+
+
+<b>C. Product Service</b>
+1. Get Product Info:
+
+a. Update correct IP in step 3
+
+b. Authentication > Bearer Token
+```
+$ Token: <get from Keycloak token>
+```
+   <img src="./markdown/Screen Shot 2022-10-18 at 9.28.27 PM.png" alt="Alt text" title="People">
+
+2. Similiar test cases for:
+```
+- Add Product
+- Delete Product
+- Update Product
+```
+<img src="./markdown/Screen Shot 2022-10-18 at 9.29.31 PM.png" alt="Alt text" title="People">
+
+3. Order a product, then the remaining stock < threshold:
+<img src="./markdown/Screen Shot 2022-10-18 at 9.31.45 PM.png" alt="Alt text" title="People">
+
+There is a message sent from Notification Service
+<img src="./markdown/Screen Shot 2022-10-18 at 9.34.09 PM.png" alt="Alt text" title="People">
