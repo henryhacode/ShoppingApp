@@ -22,14 +22,14 @@ public class ProductController {
     //Get Product info: GET
     @GetMapping("{id}")
     public ProductDto findById(@PathVariable int id){
-        System.out.println("findById");
+        System.out.println("Product:  findById");
         return productService.findById(id);
     }
 
     //Add product: POST
     @PostMapping("")
     public ProductDto addProduct(@RequestBody Product product){
-        System.out.println("addProduct");
+        System.out.println("Product:  addProduct");
 //        if(!TokenUserDetail.hasRoleAdmin())
 //            return null;
         return productService.addProduct(product);
@@ -38,7 +38,7 @@ public class ProductController {
     //Remove product: DELETE
     @DeleteMapping("{id}")
     public ProductDto deleteProduct(@PathVariable int id){
-        System.out.println("deleteProduct");
+        System.out.println("Product:  deleteProduct");
 //        if(!TokenUserDetail.hasRoleAdmin())
 //            return null;
         return productService.deleteProduct(id);
@@ -47,25 +47,25 @@ public class ProductController {
     //Update product: PUT
     @PutMapping("")
     public ProductDto updateProduct(@RequestBody Product product){
-        System.out.println("updateProduct");
+        System.out.println("Product:  updateProduct");
 //        if(!TokenUserDetail.hasRoleAdmin())
 //            return null;
         return productService.updateProduct(product);
     }
 
     //Order product: PATCH
-    @PatchMapping("{id}/{num}")
+    @PostMapping("{id}/order/{num}")
     public ProductDto orderProduct(@PathVariable int id, @PathVariable int num){
-        System.out.println("orderProduct");
+        System.out.println("Product:  orderProduct");
 //        if(!TokenUserDetail.hasRoleUser())
 //            return null;
         return productService.orderProduct(id, num);
     }
 
     //Add stock: POST
-    @PostMapping("{id}/{num}")
+    @PostMapping("{id}/add/{num}")
     public ProductDto addStock(@PathVariable int id, @PathVariable int num){
-        System.out.println("addStock");
+        System.out.println("Product:  addStock");
 //        if(!TokenUserDetail.hasRoleAdmin())
 //            return null;
         return productService.addStock(id, num);

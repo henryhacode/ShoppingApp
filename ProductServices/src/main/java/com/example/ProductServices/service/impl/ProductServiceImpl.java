@@ -51,11 +51,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDto orderProduct(int id, int number) {
-        Product product = productRepository.findById(id)
-                .orElseThrow(() -> new MyException("Data Not Found " + id));
+        Product product = productRepository.findById(id).orElse(null);
+        if (product == null) {
+            System.out.println("Product: could not find product " + id);
+            return null;
+        }
 
         int newUnits = product.getUnits() - number;
         if(newUnits < 0){
+            System.out.println("Product: Not enough products for order: (" + number + "/" + product.getUnits());
             throw new MyException("units negative");
         }
 
@@ -82,6 +86,8 @@ public class ProductServiceImpl implements ProductService {
 
         product.setUnits(newUnits);
         productRepository.save(product);
+
+        System.out.println("Product: Processed order product " + product.getId() + " , quantity: " + number);
         return mapper.map(product, ProductDto.class);
     }
 

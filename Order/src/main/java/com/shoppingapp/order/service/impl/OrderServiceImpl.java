@@ -1,5 +1,6 @@
 package com.shoppingapp.order.service.impl;
 
+import com.shoppingapp.order.entity.Product;
 import com.shoppingapp.order.entity.ShoppingOrder;
 import com.shoppingapp.order.repository.OrderRepository;
 import com.shoppingapp.order.service.OrderService;
@@ -7,10 +8,24 @@ import lombok.*;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+
+@Data
+@NoArgsConstructor
+class RetProduct {
+    int id;
+    String name;
+    String vendor;
+    String category;
+    String description;
+    int units;
+}
 
 @Data
 @NoArgsConstructor
@@ -72,9 +87,35 @@ public class OrderServiceImpl implements OrderService {
     public void save(ShoppingOrder shoppingOrder) {
         System.out.println(shoppingOrder);
 
+        // Call to product
+        try {
+            String productUrl = environment.getProperty("PRODUCT_SERVICE_URL");
+            System.out.println("product url: " + productUrl);
+            productUrl += "/products";
+
+            for (Product product : shoppingOrder.getProducts()) {
+                String oneUrl = productUrl + "/" + product.getProductId() + "/order/" + product.getQuantity();
+                System.out.println("Calling product service " + oneUrl);
+                HttpHeaders headers = new HttpHeaders();
+                headers.set("Content-Type", "application/json");
+
+                HttpEntity<Shipping> entity = new HttpEntity<>(headers);
+                restTemplate.postForEntity(oneUrl, entity, Void.class);
+            }
+        } catch (HttpClientErrorException | HttpServerErrorException httpClientOrServerExc) {
+            System.out.println(httpClientOrServerExc.getStatusCode());
+            if (HttpStatus.INTERNAL_SERVER_ERROR.equals(httpClientOrServerExc.getStatusCode())) {
+                System.out.println("Failed to order product");
+                return;
+            }
+        } catch (Exception ex) {
+            System.out.println("==============  Error processing product " + ex);
+            return;
+        }
+
         // Process payment
         try {
-            String paymentUrl = environment.getProperty("PAYMENT_SERVICE_URL") ;
+            String paymentUrl = environment.getProperty("PAYMENT_SERVICE_URL");
             System.out.println("payment url: " + paymentUrl);
             paymentUrl += "/payments";
             System.out.println("Calling payment service " + paymentUrl);
@@ -93,7 +134,7 @@ public class OrderServiceImpl implements OrderService {
                     payment.cardNumber = shoppingOrder.getPaymentCardNumber();
                     payment.expireDate = shoppingOrder.getPaymentExpireDate();
                     payment.cvc = shoppingOrder.getPaymentCvc();
-                    payment.creditHolder  = shoppingOrder.getPaymentCreditHolder();
+                    payment.creditHolder = shoppingOrder.getPaymentCreditHolder();
                     break;
                 case "PAYPAL":
                     payment.email = shoppingOrder.getPaymentEmail();
@@ -107,7 +148,8 @@ public class OrderServiceImpl implements OrderService {
             HttpEntity<Payment> entity = new HttpEntity<>(payment, headers);
             restTemplate.postForEntity(paymentUrl, entity, Void.class);
         } catch (Exception ex) {
-            System.out.println("==============  Error calling payment " + ex);
+            System.out.println("==============  Error processing payment " + ex);
+            return;
         }
 
         try {
@@ -129,9 +171,10 @@ public class OrderServiceImpl implements OrderService {
             HttpEntity<Shipping> entity = new HttpEntity<>(shipping, headers);
             restTemplate.postForEntity(shippingUrl, entity, Void.class);
         } catch (Exception ex) {
-            System.out.println("==============  Error calling shipping " + ex);
+            System.out.println("==============  Error processing shipping " + ex);
+            return;
         }
-            orderRepository.save(shoppingOrder);
+        orderRepository.save(shoppingOrder);
     }
 
     @Override
