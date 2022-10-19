@@ -6,6 +6,9 @@
 ### Github 
 https://github.com/henryhacode/ShoppingApp
 
+### Demo link
+https://mum0-my.sharepoint.com/:v:/g/personal/thiep_ha_miu_edu/Efo-WBtv3HhPmvQ31Dcg58ABGeCnfrrhWGHa9o-YHKLD4A?e=jjRwqy
+
 ## Build project
 1. Start docker.app
 
