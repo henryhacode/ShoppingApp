@@ -10,10 +10,12 @@ https://github.com/henryhacode/ShoppingApp
 1. Start docker.app
 
 
-2. Start minikube 
+2. Start minikube & deploy all the services 
 ```
 $ cd ShoppingApp
 $ start minikube
+$ cd /Deployment
+$ sh deployall.sh
 ```
 
 3. Get ip of each services
