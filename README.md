@@ -30,7 +30,7 @@ a. Loggin to keyclock using IP from step 3 > Choose Sa-mini-project2-realm-dev r
 Change Frontend URL = http://keycloak-service:8080,
    <img src="./markdown/Screen Shot 2022-10-18 at 8.02.24 PM.png" alt="Alt text" title="People">
 
-b. Loggin to keyclock using IP from step 3 > Choose Sa-mini-project2-realm-dev real > Realm settings > Tab Tokens:
+b. Realm settings > Tab Tokens:
 
 Change all settings to Days
    <img src="./markdown/Screen Shot 2022-10-18 at 8.06.36 PM.png" alt="Alt text" title="People">
@@ -94,6 +94,7 @@ VALUES
 
 <br>
 ## Run project
+<br>
 Start Postman, import provided file "SA.postman_collection.json"
 
 <br>
