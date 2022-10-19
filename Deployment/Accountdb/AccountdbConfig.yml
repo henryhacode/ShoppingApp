@@ -4,6 +4,7 @@ metadata:
   name: accountdb-config
 data:
   accountdb.sql: |-
+    DROP DATABASE IF EXISTS accountdb;
     CREATE DATABASE accountdb;
     USE accountdb;
     create table accounts (

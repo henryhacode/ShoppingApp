@@ -39,7 +39,7 @@ public class SecurityConfiguration {
                 .and()
                 .csrf().disable()
                 .authorizeHttpRequests(authorize -> authorize
-                        .antMatchers("/accounts/**").hasRole("USER")
+                        .antMatchers("/accounts/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

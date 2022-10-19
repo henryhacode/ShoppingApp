@@ -4,6 +4,7 @@ metadata:
   name: productdb-config
 data:
   productdb.sql: |-
+    DROP DATABASE IF EXISTS productdb;
     CREATE DATABASE productdb; 
     USE productdb;
     create table products (

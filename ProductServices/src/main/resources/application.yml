@@ -39,6 +39,8 @@ spring:
         jwt:
 #          issuer-uri: http://localhost:8000/auth/realms/sa-mini-project2-realm-dev
           issuer-uri: ${KEYCLOAK_SERVICE_ISSUER_URI}
+          jwk-set-uri: ${KEYCLOAK_SERVICE_JWK_SET_URI}
+
 server:
 #  port: 5002
   port: ${PRODUCT_SERVICE_PORT}
