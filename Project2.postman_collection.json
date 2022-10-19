@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "9d03c7d0-1191-4eb5-a56d-0bdcc61c4b68",
+		"name": "Project2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Order process credit type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZXMiOlsiVklFV0VSIl0sImlhdCI6MTUxNjIzOTAyMn0.3P-W-uUPOwkWq7HtSnD4honjdflV7KX25W4VYl_nSfI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1234,\n    \"products\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 50,\n            \"unitPrice\": 10\n        },\n        {\n            \"productId\": 2,\n            \"quantity\": 2,\n            \"unitPrice\": 15\n        }\n    ],\n    \"total\": 25,\n    \"paymentType\": \"CREDIT\",\n    \"paymentExpireDate\": \"09/2028\",\n    \"paymentCardNumber\": \"123456789\",\n    \"paymentCreditHolder\": \"Steve Goodman\",\n    \"paymentCvc\": \"123\",\n    \"shippingReceiver\": \"Abert Zar\",\n    \"shippingStreet\": \"801 N 12th St\",\n    \"shippingCity\": \"Fairfield\",\n    \"shippingState\": \"IA\",\n    \"shippingZipCode\": \"52556\",\n    \"shippingPhone\": \"61412345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.49.2:30503/orders",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "30503",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order process paypal type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZXMiOlsiVklFV0VSIl0sImlhdCI6MTUxNjIzOTAyMn0.3P-W-uUPOwkWq7HtSnD4honjdflV7KX25W4VYl_nSfI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1234,\n    \"products\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 10,\n            \"unitPrice\": 10\n        },\n        {\n            \"productId\": 2,\n            \"quantity\": 2,\n            \"unitPrice\": 15\n        }\n    ],\n    \"total\": 25,\n    \"paymentType\": \"PAYPAL\",\n    \"paymentEmail\": \"steve@gmail.com\",\n    \"shippingReceiver\": \"Abert Zar\",\n    \"shippingStreet\": \"801 N 12th St\",\n    \"shippingCity\": \"Fairfield\",\n    \"shippingState\": \"IA\",\n    \"shippingZipCode\": \"52556\",\n    \"shippingPhone\": \"61412345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.49.2:30503/orders",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "30503",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order process bank type",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZXMiOlsiVklFV0VSIl0sImlhdCI6MTUxNjIzOTAyMn0.3P-W-uUPOwkWq7HtSnD4honjdflV7KX25W4VYl_nSfI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerId\": 1234,\n    \"products\": [\n        {\n            \"productId\": 1,\n            \"quantity\": 10,\n            \"unitPrice\": 10\n        },\n        {\n            \"productId\": 2,\n            \"quantity\": 2,\n            \"unitPrice\": 15\n        }\n    ],\n    \"total\": 25,\n    \"paymentType\": \"BANK\",\n    \"paymentBankHolder\": \"Steve Goodman\",\n    \"paymentAccountNo\": \"1234566777788\",\n    \"paymentBankName\": \"Midwest One Bank\",\n    \"shippingReceiver\": \"Abert Zar\",\n    \"shippingStreet\": \"801 N 12th St\",\n    \"shippingCity\": \"Fairfield\",\n    \"shippingState\": \"IA\",\n    \"shippingZipCode\": \"52556\",\n    \"shippingPhone\": \"61412345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.49.2:30503/orders",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"49",
+						"2"
+					],
+					"port": "30503",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
