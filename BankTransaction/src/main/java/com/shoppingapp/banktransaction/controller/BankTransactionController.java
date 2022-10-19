@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/bankTrans")
+@RequestMapping("/bank")
 @CrossOrigin()
 @RequiredArgsConstructor
 public class BankTransactionController {

@@ -37,19 +37,6 @@ public class PaymentServiceImpl implements PaymentService {
         if (type == null) {
             type = "CREDIT";
         }
-        // TODO: get subUrl from env
-        String subUrl = "";
-        switch (type) {
-            case "CREDIT":
-                subUrl = "/creditTrans";
-                break;
-            case "PAYPAL":
-                subUrl = "/paypalTrans";
-                break;
-            default:
-                subUrl = "/bankTrans";
-                break;
-        }
         // call to specific transaction service
         String transactionUrl = environment.getProperty(type + "_TRANSACTION_SERVICE_URL");
         System.out.println("transaction type: " + type + ", url: " + transactionUrl);
@@ -60,7 +47,7 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         try {
-            transactionUrl += subUrl;
+            transactionUrl += "/" + type.toLowerCase();
             System.out.println("Calling payment service " + transactionUrl);
             HttpHeaders headers = new HttpHeaders();
             headers.set("Content-Type", "application/json");
