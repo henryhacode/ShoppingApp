@@ -71,6 +71,8 @@ public class ProductServiceImpl implements ProductService {
         }
         if(newUnits < thresholdUnits){
 //            String url = "http://localhost:5006/notifications";
+            System.out.println("Product: product " + id + " has less than threshold " + thresholdUnits);
+            System.out.println("Product: going to send notification...");
             String url = environment.getProperty("NOTIFICATION_SERVICE_URL") + "/" + "notifications";
             System.out.println("url: " + url);
 

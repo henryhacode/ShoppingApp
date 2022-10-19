@@ -11,8 +11,9 @@ import lombok.RequiredArgsConstructor;
 public class NotificationController {
     @PostMapping("")
     public String createNotification(@RequestBody NotificationDto notification) {
-        System.out.println("createNotification");
+        System.out.println("Notification: createNotification");
         String result = "Message " + notification.getSubject() + " was sent to " + notification.getEmail();
+        System.out.println("Notification: Delivered notification: " + result);
         return result;
     }
 }
