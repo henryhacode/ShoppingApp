@@ -92,11 +92,11 @@ VALUES
 ``` 
    <img src="./markdown/Screen Shot 2022-10-18 at 8.18.12 PM.png" alt="Alt text" title="People">
 
-<br>
+
 ## Run project
 <br>
 Start Postman, import provided file "SA.postman_collection.json"
-
+<br>
 <br>
 <b>A. Keycloak Service</b>
 1. Generate Token with notes:
