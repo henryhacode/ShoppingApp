@@ -35,7 +35,8 @@ b. Loggin to keyclock using IP from step 3 > Choose Sa-mini-project2-realm-dev r
 Change all settings to Days
    <img src="./markdown/Screen Shot 2022-10-18 at 8.06.36 PM.png" alt="Alt text" title="People">
 
-
+<br>
+<br>
 5. Manual insert databases into accountdb (if data not auto generated)
 
 a. Open CLI of accountdb pod
@@ -62,7 +63,8 @@ VALUES
 ```
 <img src="./markdown/Screen Shot 2022-10-18 at 8.21.54 PM.png" alt="Alt text" title="People">
 
-
+<br>
+<br>
 6. Manual insert databases into productdb (if data not auto generated)
 
 a. Open CLI of productdb pod
@@ -90,9 +92,11 @@ VALUES
 ``` 
    <img src="./markdown/Screen Shot 2022-10-18 at 8.18.12 PM.png" alt="Alt text" title="People">
 
+<br>
 ## Run project
 Start Postman, import provided file "SA.postman_collection.json"
 
+<br>
 <b>A. Keycloak Service</b>
 1. Generate Token with notes:
 
@@ -112,8 +116,9 @@ $ grant_type: password
 $ username: phat
 $ password: 123
 ```
-   <img src="./markdown/Screen Shot 2022-10-18 at 8.24.11 PM.png" alt="Alt text" title="People">
+   <img src="./markdown/Screen Shot 2022-10-18 at 9.48.04 PM.png" alt="Alt text" title="People">
 
+<br>
 <b>B. Account Service</b>
 1. Get Account Info:
 
@@ -136,7 +141,8 @@ $ Token: <get from Keycloak token>
 ```
 <img src="./markdown/Screen Shot 2022-10-18 at 9.07.20 PM.png" alt="Alt text" title="People">
 
-
+<br>
+<br>
 <b>C. Product Service</b>
 1. Get Product Info:
 
